@@ -1,0 +1,1 @@
+comment on view "public"."f_v" is null;

@@ -21,6 +21,7 @@ THINGS = [
     "collations",
     "rlspolicies",
     "triggers",
+    "comments"
 ]
 PK = "PRIMARY KEY"
 
@@ -376,6 +377,13 @@ def get_selectable_differences(
                         replaceable.add(k)
 
                 continue
+
+            # Go through m.dependents and add any comments to not_replaceable
+            for d in m.dependents:
+                if d in unmodified_other and unmodified_other[d].relationtype == 'd':
+                    dd = unmodified_other.pop(d)
+                    modified_other[d] = dd
+                not_replaceable.add(d)
 
             for d in m.dependents_all:
                 if d in unmodified_other:

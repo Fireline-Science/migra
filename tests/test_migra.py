@@ -67,6 +67,8 @@ def test_extversions():
 fixtures = """\
 everything
 collations
+comments
+comments2
 identitycols
 partitioning
 privileges
@@ -82,6 +84,7 @@ dependencies
 dependencies2
 dependencies3
 dependencies4
+functions
 constraints
 generated
 """.split()

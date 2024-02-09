@@ -4,7 +4,9 @@ import re
 
 
 def check_for_drop(s):
-    return bool(re.search(r"(drop\s+)", s, re.IGNORECASE))
+    return bool(re.search(r"(drop\s+)", s, re.IGNORECASE)) or bool(
+        re.search(r"comment\s+.*\s+is\s+null", s, re.IGNORECASE)
+    )
 
 
 class Statements(list):
