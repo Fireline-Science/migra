@@ -13,6 +13,7 @@ homepage = "https://databaseci.com/docs/migra"
 python = ">=3.7,<4"
 sqlbag = "*"
 six = "*"
+sqlalchemy = "<2"
 # schemainspect = {path="../schemainspect", develop=true}
 schemainspect = ">=3.1.1663480743"
 psycopg2-binary = { version="*", optional = true }
