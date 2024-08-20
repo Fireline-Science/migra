@@ -1,13 +1,8 @@
-FROM python:3.9-alpine
+FROM schemainspect
 
-RUN apk add --update --no-cache --upgrade postgresql-libs && \
-  apk add --no-cache --virtual=build-dependencies build-base postgresql-dev && \
-  pip install --no-cache-dir packaging psycopg2-binary migra && \
-  apk del build-dependencies && \
-  rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
+WORKDIR /migra
+COPY . .
 
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-
-ENTRYPOINT ["/docker-entrypoint.sh"]
+RUN poetry install && ln -s /migra/.venv/bin/migra /usr/local/bin/migra
 
 CMD ["migra", "--help"]
